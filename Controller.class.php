@@ -1,5 +1,5 @@
 <?php
-class Controller extends {
+class Controller{
     private $argsArray = array();
 
     public $length;

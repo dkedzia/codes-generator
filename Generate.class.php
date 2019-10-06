@@ -17,18 +17,26 @@ class Generate{
     }
 
     private function isItUnique($code){
-        return in_array($code, $this->codesArray);
+        return !in_array($code, $this->codesArray);
     }
 
     public function execute(){
+        $code = '';
+        
         for($i = 0; $i < $this->amount; $i++){
-            $code = '';
-            $unique = false;
-            
-            $code = $this->generateOneCode();
-            $unique = $this->isItUnique($code);
-
+            echo "i: $i ";
+            do{
+                echo " do ";
+                $code = '';
+                $unique = false;
+                
+                $code = $this->generateOneCode();
+                $tmp = $code;
+                array_push($this->codesArray, $tmp);
+                echo "push1: $tmp ";
+            } while($this->isItUnique($tmp));
             array_push($this->codesArray, $code);
+            echo "push2: $code ";
         }
         print_r($this->codesArray);
     }
