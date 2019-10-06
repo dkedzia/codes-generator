@@ -7,11 +7,6 @@ class Generate{
 
     public $charactersBase = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-    function __construct($lenght, $amout){
-        $this->length = $lenght;
-        $this->amount = $amout;
-    }
-
     public function generateOneCode(){
         $resultString = '';
         for ($i = 0; $i < $this->length; $i++){ 
@@ -39,6 +34,3 @@ class Generate{
     }
 };
 
-parse_str(implode('&', array_slice($argv, 1)), $_GET);
-$generate = new Generate($_GET['length'], $_GET['amount']);
-$generate->execute();
