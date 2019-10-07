@@ -7,7 +7,7 @@ class Generate{
 
     public $charactersBase = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-    public function generateOneCode(){
+    private function generateOneCode(){
         $resultString = '';
         for ($i = 0; $i < $this->length; $i++){ 
             $index = rand(0, strlen($this->charactersBase) - 1); 
@@ -22,9 +22,7 @@ class Generate{
 
     public function execute(){
         for($i = 0; $i < $this->amount; $i++){
-            echo "i: $i\n";
             do{
-                echo " do ";
                 $code = '';
                 $unique = false;
                 

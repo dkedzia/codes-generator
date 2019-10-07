@@ -4,33 +4,33 @@ class Controller{
 
     public $length;
     public $amount;
-    public $fileName;
+    public $fileName = 'codes.txt';
 
     public $generate;
     public $view;
     public $fileOperator;
 
-    function __construct($argsArray){
+    function __construct($argsArray, $web = false){
         $this->view = new View();
         $this->generate = new Generate();
         $this->fileOperator = new FileOperator();
         $this->argsArray = $argsArray;
         if($this->argsParse()){
-            $maxLength = pow(62,$this->amount);
-            if($this->length <= $maxLength){
-                echo "MaxLength: $maxLength\n";
+            $maxAmount = pow(strlen($this->generate->charactersBase), $this->length);
+            if($this->amount <= $maxAmount){
                 $codesArray = $this->generate->execute();
             
-                $this->view->printCodes($codesArray);
+                (!$web) ? $this->view->printCodes($codesArray) : false;
                 if($this->fileName){
                     $this->fileOperator->fileName = $this->fileName;
                     $this->fileOperator->saveToFile($codesArray);
-                    $this->view->savedToFile($this->fileName);
+                    (!$web) ? $this->view->savedToFile($this->fileName) : false;
+                    ($web) ? $this->fileOperator->makeDownload() : false;
                 }
             } else {
-                $this->view->tooManyCodes($maxLength);
+                $this->view->tooManyCodes($maxAmount);
             }
-        } 
+        }
     }
 
     public function argumentSearch($argToSearch){
@@ -63,12 +63,12 @@ class Controller{
             if(is_numeric($this->length) && is_numeric($this->amount)):
                 $this->generate->length = $this->length;
                 $this->generate->amount = $this->amount;
-                echo "Amout: $this->amount\n";
                 return true;
             else:
                 return false;   
             endif;
         endif;
+        
     }
 
     private function chooseArg($arg1, $arg2){
