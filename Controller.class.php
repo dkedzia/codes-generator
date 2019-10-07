@@ -43,23 +43,14 @@ class Controller{
     }
 
     public function argsParse(){
-        if(in_array('--help', $this->argsArray)):
+        if(in_array('--help', $this->argsArray) || in_array('-h', $this->argsArray)):
             $this->view->printHelp();
             return false;
         else:
-            if($this->chooseArg('-l', '--length')):
-                $this->length = $this->chooseArg('-l', '--length');
-            else:
-                $this->length = 10;
-            endif;
-            if($this->chooseArg('-a', '--amount')):
-                $this->amount = $this->chooseArg('-a', '--amount');
-            else:
-                $this->amount = 1;
-            endif;
-            if($this->chooseArg('-f', '--file')):
-                $this->fileName = $this->chooseArg('-f', '--file');
-            endif;
+            ($this->chooseArg('-l', '--length')) ? $this->length = $this->chooseArg('-l', '--length') : $this->length = 10;
+            ($this->chooseArg('-a', '--amount')) ? $this->amount = $this->chooseArg('-a', '--amount') : $this->amount = 1;
+            ($this->chooseArg('-f', '--file')) ? $this->fileName = $this->chooseArg('-f', '--file') : false;
+            
             if(is_numeric($this->length) && is_numeric($this->amount)):
                 $this->generate->length = $this->length;
                 $this->generate->amount = $this->amount;

@@ -1,10 +1,12 @@
 <?php
-include 'Generate.class.php';
+
 include 'Controller.class.php';
-include 'View.class.php';
-include 'FileOperator.class.php';
 include 'ControllerInput.class.php';
 
+include 'Generate.class.php';
+include 'FileOperator.class.php';
+
+include 'View.class.php';
 
 $cli = (isset($argv)) ? true : false;
 
@@ -23,6 +25,5 @@ switch($cli){
         } else {
             header("Location: form.html");
         }
-        
     break;
 }
