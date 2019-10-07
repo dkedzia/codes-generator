@@ -12,8 +12,7 @@ class FileOperator{
             fclose($file);
             return true;
         } else return false;
-        
-    }
+    }   // End of saveToFile()
     public function makeDownload(){
         header('Content-Type: application/download');
         header('Content-Disposition: attachment; filename="codes.txt"');
@@ -22,5 +21,5 @@ class FileOperator{
         $f = fopen("codes.txt", "r");
         fpassthru($f);
         fclose($f);
-    }
+    }   // End of makeDownload()
 };

@@ -13,17 +13,17 @@ $cli = (isset($argv)) ? true : false;
 $controllerInput = new ControllerInput();
 
 switch($cli){
-    case true:
+    case true:  // If CLI
         $controller = new Controller($argv);
-    break;
-    case false:
+    break;  // End of true case
+    case false: // If WEB
         $controllerInput = new ControllerInput();
         if(isset($_GET['length']) && isset($_GET['amount'])){
             $controllerInput->addArg('--length', $_GET['length']);
             $controllerInput->addArg('--amount', $_GET['amount']);
             $controller = new Controller($controllerInput->argArray, true);
-        } else {
-            header("Location: form.html");
+        } else {    // If not enough args
+            header("Location: form.html");  // Redirect to html form
         }
-    break;
-}
+    break;  // End of false case
+}   // End of switch $cli
