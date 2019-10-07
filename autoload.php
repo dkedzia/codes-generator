@@ -16,13 +16,13 @@ switch($cli){
     break;
     case false:
         $controllerInput = new ControllerInput();
-        (isset($_GET['length'])) ? $controllerInput->addArg('--length', $_GET['length']) : false;
-        (isset($_GET['amount'])) ? $controllerInput->addArg('--amount', $_GET['amount']) : false;
-        $controller = new Controller($controllerInput->argArray, true);
+        if(isset($_GET['length']) && isset($_GET['amount'])){
+            $controllerInput->addArg('--length', $_GET['length']);
+            $controllerInput->addArg('--amount', $_GET['amount']);
+            $controller = new Controller($controllerInput->argArray, true);
+        } else {
+            header("Location: form.html");
+        }
+        
     break;
 }
-
-//$controller = new Controller($controllerInput->inputType($cli), $argv);
-
-
-    //echo php_sapi_name();
