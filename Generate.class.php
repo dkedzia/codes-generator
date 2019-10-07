@@ -1,7 +1,7 @@
 <?php
 class Generate{
-    private $lenght;
-    private $amout;
+    public $lenght;
+    public $amout;
 
     private $codesArray = array();
 
@@ -21,24 +21,18 @@ class Generate{
     }
 
     public function execute(){
-        $code = '';
-        
         for($i = 0; $i < $this->amount; $i++){
-            echo "i: $i ";
+            echo "i: $i\n";
             do{
                 echo " do ";
                 $code = '';
                 $unique = false;
                 
                 $code = $this->generateOneCode();
-                $tmp = $code;
-                array_push($this->codesArray, $tmp);
-                echo "push1: $tmp ";
-            } while($this->isItUnique($tmp));
+            } while(!$this->isItUnique($code));
             array_push($this->codesArray, $code);
-            echo "push2: $code ";
         }
-        print_r($this->codesArray);
+        return $this->codesArray;
     }
 };
 
