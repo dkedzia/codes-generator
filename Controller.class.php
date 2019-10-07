@@ -4,7 +4,6 @@ class Controller{
 
     public $length;
     public $amount;
-    public $fileOutput = false;
     public $fileName;
 
     public $generate;
