@@ -6,9 +6,13 @@ Describtion of all available options (from CLI):
 php index.php --help
 ```
 *It returns following:*
-### -h, --help      Showing this description and ends program
-### -l, --length [NUMBER]   Setting the length of each code. Default is 10.
-### -a, --amount [NUMBER]   Setting the amount of generated codes. Default is 1.
-### -f, --file [FILE NAME]  Setting the text file name, to save codes in. By default the name is 'codes.txt'.
+#### -h, --help
+Showing this description and ends program
+#### -l, --length [NUMBER]
+Setting the length of each code. Default is 10.
+#### -a, --amount [NUMBER]
+Setting the amount of generated codes. Default is 1.
+#### -f, --file [FILE NAME]
+Setting the text file name, to save codes in. By default the name is 'codes.txt'.
 
 If you'd like to run it from web browser, open *form.html* file.
