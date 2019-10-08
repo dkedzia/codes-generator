@@ -1,7 +1,7 @@
 # Codes Generator
 *codes-generator*
 
-Allows you to draw codes of a given length and number through CLI or WEB. Additionally, it generates a text file with randomly drawn codes.
+Allows you to draw codes of a given length and number through CLI or WEB. Additionally, it generates a text file with randomly drawn codes. Plain PHP, **no frameworks**.
 
 Describtion of all available options (from CLI):
 ```
