@@ -1,11 +1,13 @@
 <?php
-class FileOperator{
+class FileOperator
+{
     public $fileName;
 
-    public function saveToFile($content){
+    public function saveToFile($content)
+    {
         $file = fopen($this->fileName, "w");
-        if($file){
-            for($i = 0; $i < sizeof($content); $i++){
+        if ($file) {
+            for ($i = 0; $i < sizeof($content); $i++) {
                 fwrite($file, $content[$i]);
                 fwrite($file,"\n");
             }
@@ -13,7 +15,8 @@ class FileOperator{
             return true;
         } else return false;
     }   // End of saveToFile()
-    public function makeDownload(){
+    public function makeDownload()
+    {
         header('Content-Type: application/download');
         header('Content-Disposition: attachment; filename="codes.txt"');
         header("Content-Length: " . filesize("codes.txt"));

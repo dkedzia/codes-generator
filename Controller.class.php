@@ -1,8 +1,8 @@
 <?php
 class Controller{
-    public $length;
-    public $amount;
-    public $fileName = 'codes.txt';
+    private $length;
+    private $amount;
+    private $fileName = 'codes.txt';
 
     private $argsArray = array();
 
@@ -10,19 +10,20 @@ class Controller{
     private $view;
     private $fileOperator;
 
-    function __construct($argsArray, $web = false){
+    function __construct($argsArray, $web = false)
+    {
         $this->view = new View();
         $this->generate = new Generate();
         $this->fileOperator = new FileOperator();
         $this->argsArray = $argsArray;
-        if($this->argsParse()){
+        if ($this->argsParse()) {
             $maxAmount = pow(strlen($this->generate->charactersBase), $this->length);
-            if($this->amount <= $maxAmount){
+            if ($this->amount <= $maxAmount) {
                 $codesArray = $this->generate->execute();
 
                 (!$web) ? $this->view->printCodes($codesArray) : false;
 
-                if($this->fileName){
+                if ($this->fileName) {
                     $this->fileOperator->fileName = $this->fileName;
                     $this->fileOperator->saveToFile($codesArray);
 
@@ -36,41 +37,44 @@ class Controller{
         }
     }   // End of contructor
 
-    public function argumentSearch($argToSearch){
-        if(in_array($argToSearch, $this->argsArray)){
+    public function argumentSearch($argToSearch)
+    {
+        if (in_array($argToSearch, $this->argsArray)) {
 
             $index=array_search($argToSearch,$this->argsArray);
 
-            if(isset($this->argsArray[$index+1]) && !empty($this->argsArray[$index+1])){
+            if (isset($this->argsArray[$index+1]) && !empty($this->argsArray[$index+1])) {
                 return $this->argsArray[$index+1];
             } else return false;
             
         } else return false;
     }   // End of argumentSearch()
 
-    public function argsParse(){
-        if(in_array('--help', $this->argsArray) || in_array('-h', $this->argsArray)):
+    public function argsParse()
+    {
+        if (in_array('--help', $this->argsArray) || in_array('-h', $this->argsArray)) {
             $this->view->printHelp();
             return false;
-        else:
+        } else {
             ($this->chooseArg('-l', '--length')) ? $this->length = $this->chooseArg('-l', '--length') : $this->length = 10;
             ($this->chooseArg('-a', '--amount')) ? $this->amount = $this->chooseArg('-a', '--amount') : $this->amount = 1;
             ($this->chooseArg('-f', '--file')) ? $this->fileName = $this->chooseArg('-f', '--file') : false;
             
-            if(is_numeric($this->length) && is_numeric($this->amount)):
+            if (is_numeric($this->length) && is_numeric($this->amount)) {
                 $this->generate->length = $this->length;
                 $this->generate->amount = $this->amount;
                 return true;
-            else:
+            } else {
                 return false;   
-            endif;
-        endif;
+            }
+        }
     }   // End of argsParse()
 
-    private function chooseArg($arg1, $arg2){
-        if($this->argumentSearch($arg1)){
+    private function chooseArg($arg1, $arg2)
+    {
+        if ($this->argumentSearch($arg1)) {
             return $this->argumentSearch($arg1);
-        } else if ($this->argumentSearch($arg2)){
+        } else if ($this->argumentSearch($arg2)) {
             return $this->argumentSearch($arg2);
         } else return false;
     }   // End of chooseArg()
