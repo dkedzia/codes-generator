@@ -1,5 +1,6 @@
 <?php
-class Controller{
+class MainController
+{
     private $length;
     private $amount;
     private $fileName = 'codes.txt';
@@ -16,8 +17,10 @@ class Controller{
         $this->generate = new Generate();
         $this->fileOperator = new FileOperator();
         $this->argsArray = $argsArray;
+
         if ($this->argsParse()) {
             $maxAmount = pow(strlen($this->generate->charactersBase), $this->length);
+
             if ($this->amount <= $maxAmount) {
                 $codesArray = $this->generate->execute();
 

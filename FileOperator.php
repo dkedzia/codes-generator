@@ -15,6 +15,7 @@ class FileOperator
             return true;
         } else return false;
     }   // End of saveToFile()
+    
     public function makeDownload()
     {
         header('Content-Type: application/download');

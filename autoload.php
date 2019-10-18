@@ -1,24 +1,24 @@
 <?php
 function __autoload($className)
 {
-   require('./'.$className.'.class.php');
+   require('./'.$className.'.php');
 }
 
 $cli = (isset($argv)) ? true : false;
 
-$controllerInput = new ControllerInput();
+$inputController = new InputController();
 
 switch($cli)
 {
     case true:  // If CLI
-        $controller = new Controller($argv);
+        $controller = new MainController($argv);
         break;  // End of true case
     case false: // If WEB
-        $controllerInput = new ControllerInput();
+        $inputController = new InputController();
         if (isset($_GET['length']) && isset($_GET['amount'])) {
-            $controllerInput->addArg('--length', $_GET['length']);
-            $controllerInput->addArg('--amount', $_GET['amount']);
-            $controller = new Controller($controllerInput->argArray, true);
+            $inputController->addArg('--length', $_GET['length']);
+            $inputController->addArg('--amount', $_GET['amount']);
+            $controller = new MainController($inputController->argArray, true);
         } else {    // If not enough args
             header("Location: form.html");  // Redirect to html form
         }

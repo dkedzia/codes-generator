@@ -3,7 +3,7 @@
 
 Allows you to draw codes of a given length and number through CLI or WEB. Additionally, it generates a text file with randomly drawn codes. Plain PHP, **no frameworks**.
 
-Describtion of all available options (from CLI):
+Description of all available options (from CLI):
 ```
 php index.php --help
 ```
@@ -18,3 +18,10 @@ Setting the amount of generated codes. Default is 1.
 Setting the text file name, to save codes in. By default the name is 'codes.txt'.
 
 If you'd like to run it from web browser, open *form.html* file.
+
+*applicability*
+
+Can be used to generate:
+- discount codes for shops/services,
+- activation keys for software (if done right),
+- anything else where is need to use huge amount of random codes.
