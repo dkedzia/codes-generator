@@ -24,4 +24,4 @@ If you'd like to run it from web browser, open *form.html* file.
 Can be used to generate:
 - discount codes for shops/services,
 - activation keys for software (if done right),
-- anything else where is need to use huge amount of random codes.
+- anything else where you need huge amount of random codes.
