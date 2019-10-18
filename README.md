@@ -19,6 +19,12 @@ Setting the text file name, to save codes in. By default the name is 'codes.txt'
 
 If you'd like to run it from web browser, open *form.html* file.
 
+# Example
+```
+php index.php -l 16 -a 4096 -f example.txt
+```
+It will generate 4096 codes of 16 characters length and save it to file "example.txt". Result file is available in this repository as example.
+
 # Applicability
 
 Can be used to generate:
