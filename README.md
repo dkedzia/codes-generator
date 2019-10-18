@@ -19,7 +19,7 @@ Setting the text file name, to save codes in. By default the name is 'codes.txt'
 
 If you'd like to run it from web browser, open *form.html* file.
 
-*applicability*
+# Applicability
 
 Can be used to generate:
 - discount codes for shops/services,
